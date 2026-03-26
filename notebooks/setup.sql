@@ -1,46 +1,42 @@
 CREATE DATABASE real_estate;
 
--- 1. Удаляем старую кривую таблицу
 DROP TABLE IF EXISTS apartments;
 
--- 2. Создаем новую, где этажи и комнаты - это NUMERIC
 CREATE TABLE apartments (
     id VARCHAR(50),
     city VARCHAR(50),
     type VARCHAR(50),
     squareMeters NUMERIC,
-    rooms NUMERIC,        -- Поменяли с INT на NUMERIC
-    floor NUMERIC,        -- Поменяли с INT на NUMERIC
-    floorCount NUMERIC,   -- Поменяли с INT на NUMERIC
-    buildYear NUMERIC,    -- Поменяли с INT на NUMERIC
+    rooms NUMERIC,
+    floor NUMERIC,
+    floor_count NUMERIC,
+    build_year NUMERIC,
     latitude NUMERIC,
     longitude NUMERIC,
-    centreDistance NUMERIC,
-    poiCount NUMERIC,
-    schoolDistance NUMERIC,
-    clinicDistance NUMERIC,
-    postOfficeDistance NUMERIC,
-    kindergartenDistance NUMERIC,
-    restaurantDistance NUMERIC,
-    collegeDistance NUMERIC,
-    pharmacyDistance NUMERIC,
+    centre_distance NUMERIC,
+    poi_count NUMERIC,
+    school_distance NUMERIC,
+    clinic_distance NUMERIC,
+    post_office_distance NUMERIC,
+    kindergarten_distance NUMERIC,
+    restaurant_distance NUMERIC,
+    college_distance NUMERIC,
+    pharmacy_distance NUMERIC,
     ownership VARCHAR(50),
-    buildingMaterial VARCHAR(50),
+    building_material VARCHAR(50),
     condition VARCHAR(50),
-    hasParkingSpace VARCHAR(10),
-    hasBalcony VARCHAR(10),
-    hasElevator VARCHAR(10),
-    hasSecurity VARCHAR(10),
-    hasStorageRoom VARCHAR(10),
+    has_parking_space VARCHAR(10),
+    has_balcony VARCHAR(10),
+    has_elevator VARCHAR(10),
+    has_security VARCHAR(10),
+    has_storage_room VARCHAR(10),
     price NUMERIC,
     offer_type VARCHAR(10),
     date_month DATE
 );
 
--- Сначала очистим таблицу от возможных остатков
 TRUNCATE TABLE apartments; 
 
--- Загружаем правильный файл!
 COPY apartments
 FROM 'D:/Lern ht code/real_estate poland/data/processed/apartments_clean_final.csv'
 DELIMITER ','
