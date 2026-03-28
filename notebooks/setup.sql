@@ -6,7 +6,7 @@ CREATE TABLE apartments (
     id VARCHAR(50),
     city VARCHAR(50),
     type VARCHAR(50),
-    squareMeters NUMERIC,
+    square_meters NUMERIC,
     rooms NUMERIC,
     floor NUMERIC,
     floor_count NUMERIC,
@@ -38,6 +38,6 @@ CREATE TABLE apartments (
 TRUNCATE TABLE apartments; 
 
 COPY apartments
-FROM 'D:/Lern ht code/real_estate poland/data/processed/apartments_clean_final.csv'
+FROM 'D:/Lern ht code/real_estate poland/data/processed/apartments_all.csv'
 DELIMITER ','
 CSV HEADER;
