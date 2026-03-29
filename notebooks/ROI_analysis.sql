@@ -1,4 +1,4 @@
--- ROI - Return on Investment BY CITY
+-- ROI by city: which city is most profitable for investing
 WITH sale AS (
     SELECT city,
            AVG(price) AS avg_sale_price
@@ -24,7 +24,7 @@ JOIN rent AS r
 USING(city)
 ORDER BY roi_percent DESC;
 
--- ROI - Return on Investment BY BUILDING TYPE (Что окупается быстрее через сдачу в аренду)
+-- ROI - Return on Investment BY BUILDING TYPE
 WITH sale AS (
     SELECT type,
            AVG(price) AS avg_sale_price
@@ -43,10 +43,10 @@ rent AS (
 )
 SELECT 
     s.type,
-    ROUND(s.avg_sale_price, 0)  AS avg_sale_price,
-    ROUND(r.avg_rent_price, 0)  AS avg_rent_per_month,
-    ROUND((r.avg_rent_price * 12 / s.avg_sale_price * 100), 2) AS roi_percent,
-    ROUND((s.avg_sale_price / (r.avg_rent_price * 12)), 1) AS payback_years
+    ROUND(s.avg_sale_price, 0) AS avg_sale_price,
+    ROUND(r.avg_rent_price, 0) AS avg_rent_per_month,
+    ROUND((r.avg_rent_price*12 / s.avg_sale_price*100), 2) AS roi_percent,
+    ROUND((s.avg_sale_price / (r.avg_rent_price*12)), 1) AS payback_years
 FROM sale AS s
 JOIN rent AS r
 USING(type)

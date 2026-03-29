@@ -15,8 +15,8 @@ ORDER BY city, offer_type, count DESC;
 SELECT
     CASE
         WHEN floor = 0 THEN 'Ground floor (Parter)'
-        WHEN floor BETWEEN 1 AND 3  THEN '1-3 floor'
-        WHEN floor BETWEEN 4 AND 7  THEN '4-7 floor'
+        WHEN floor BETWEEN 1 AND 3 THEN '1-3 floor'
+        WHEN floor BETWEEN 4 AND 7 THEN '4-7 floor'
         WHEN floor BETWEEN 8 AND 15 THEN '8-15 floor'
         ELSE '16+'
     END AS floor_group,
