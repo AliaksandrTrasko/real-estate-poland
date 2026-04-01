@@ -61,13 +61,31 @@ ORDER BY distance;
 WITH ranked AS (
     SELECT city, type, square_meters, build_year, price,
     ROUND(price/square_meters) AS price_per_sqm,
-    ROW_NUMBER() OVER (PARTITION BY city ORDER BY price DESC) as row_num,
+    ROW_NUMBER() OVER (PARTITION BY city ORDER BY ROUND(price / square_meters) DESC) as row_num,
     date_month
     FROM apartments
     WHERE offer_type = 'sale'
     AND square_meters > 15
+    AND type != 'Unknown'
 )
 SELECT * 
 FROM ranked
 WHERE row_num <= 10
 ORDER BY city, row_num;
+
+-- Most Expensive Apartments in each city (sales only)
+WITH ranked AS (
+    SELECT city, type, square_meters, build_year, price,
+    ROUND(price/square_meters) AS price_per_sqm,
+    ROW_NUMBER() OVER (PARTITION BY city ORDER BY ROUND(price / square_meters) DESC) as row_num,
+    date_month
+    FROM apartments
+    WHERE offer_type = 'sale'
+    AND square_meters > 15
+    AND type != 'Unknown'
+)
+SELECT * 
+FROM ranked
+WHERE row_num = 1
+ORDER BY city, row_num;
+    

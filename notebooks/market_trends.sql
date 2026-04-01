@@ -23,7 +23,7 @@ SELECT
     COUNT(*) AS listings,
     ROUND(AVG(price / square_meters), 0) AS avg_price_per_sqm
 FROM apartments
-WHERE offer_type = 'sale' AND square_meters > 0
+WHERE offer_type = 'sale' AND square_meters > 15
 GROUP BY floor_group
 ORDER BY floor_group;
 
@@ -36,6 +36,6 @@ SELECT
     ROUND(AVG(price / square_meters), 0) AS avg_price_per_sqm,
     COUNT(*) AS count
 FROM apartments
-WHERE square_meters > 0
+WHERE square_meters > 15
 GROUP BY date_month, offer_type
-ORDER BY date_month, offer_type;
+ORDER BY offer_type, date_month;
