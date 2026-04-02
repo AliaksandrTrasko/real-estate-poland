@@ -30,6 +30,7 @@ An end-to-end data analytics project exploring the real estate market (sales and
 # Dashboard & Visualizations
 The results of the SQL queries were exported to Excel to construct a clean, executive-level dashboard.
 
+![](images/dashboard.png)
 ---
 
 # Key Business Insights
