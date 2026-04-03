@@ -26,6 +26,24 @@ An end-to-end data analytics project exploring the real estate market (sales and
 └── README.md
 ```
 
+## Data Architecture
+
+## 1. Data Cleaning using Python
+- Merged 19 CSV files for sales and rentals into a unified dataset.
+- Created new columns, such as `offer_type` and `year_month` from filenames.
+- Handled missing data (e.g., imputing `NULL` floor levels as `Ground Floor (Parter)`)
+- Renamed columns to `snake_case` and standardized categorical values for readability (e.g. `blockOfFlats` -> `Block of Flats`, concreteSlab -> Concrete Slab, etc.)
+
+## 2. Database setup (PostgreSQL)
+- Designed the database table schema: apartments table includes all the key features: location (city, coordinates), property characteristics (size, rooms, floor, year built), proximity to infrastructure (schools, etc.) and listing details (price, offer type, date).
+- Loaded the data: after cleaning and preprocessing the data into `apartments_all.csv`, I imported it using PostgreSQL's command COPY
+
+## 3. Analytical queries (PostgreSQL)
+Wrote SQL scripts to extract real business insights from the data:
+- **Investment potential**: Calculated rental yield (Return on Investment) by joining aggregated sales and rental data.
+- **Feature Impact on pricing**: Segmented prices based on two key factors - `location` (how distance from city center affects the price) and `infrastructure` (what is the additional charge for amenities such as a balcony or parking)
+- **Market Trends**: Analyzed how apartment characteristics (size, rooms, floor) differ by city and offer type, plus how inflation affects pricing
+
 
 # Dashboard & Visualizations
 The results of the SQL queries were exported to Excel to construct a clean, executive-level dashboard.
