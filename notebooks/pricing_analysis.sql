@@ -14,7 +14,7 @@ basic AS (
       AND has_balcony = 'no'
 )
 SELECT
-    ROUND(premium.price_per_sqm, 2) AS premium_sqm,
+    ROUND(premium.pdrice_per_sqm, 2) AS premium_sqm,
     ROUND(basic.price_per_sqm, 2) AS basic_sqm
 FROM premium
 CROSS JOIN basic;
@@ -87,5 +87,5 @@ WITH ranked AS (
 SELECT * 
 FROM ranked
 WHERE row_num = 1
-ORDER BY city, row_num;
+ORDER BY price_per_sqm DESC;
     
